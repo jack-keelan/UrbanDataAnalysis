@@ -1,0 +1,36 @@
+Work Flow Data Competition
+Initial Data Parsing
+Turn list mode into integrated data
+Method
+Take list mode data and integrate it into 4 or 8 Hertz spectral data files.  These files will then be used as input in the “Continued Data Parsing” below.
+Scripts
+* data_parsing.R
+Input & Output
+* main input is the raw list mode data:
+o the “raw” list mode data energy & time delta by photon
+o C:\Users\mooreet_la\projects\SDRD\competition\data\trainingData\listData
+o C:\Users\mooreet_la\projects\SDRD\competition\data\testingData\listData1
+* The file naming is different for the two input sets.
+* Main output is the 4 or 8 Hertz data:
+o Integrated spectra by channels (or other feature) in bins
+o …\competition\data\trainingData\integrated_32Ch25s  (quarter second)
+o …\competition\data\trainingData\integrated_32Ch125s (8th second)
+o Same for ‘testingData’
+Continued Data Parsing
+Build the training, testing, & validation sets
+Method
+Scripts
+Output
+Model Building
+Notes
+1. Naming convention is that the data set given to us as “training data” is called training (model building) & testing (model building testing).  And the “testing data” is called validation data, used to score the methods.
+
+1 See notes on the testing vs. training nomenclature.  Here the competition language is referenced, so trainingData here is training & testing data and the testingData is the validation data.
+---------------
+
+------------------------------------------------------------
+
+---------------
+
+------------------------------------------------------------
+

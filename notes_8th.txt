@@ -1,0 +1,49 @@
+## 2 sec at 8th sec
+> confMTX.evts <- confusionMatrix(as.factor(vec_ans),true_val)
+> confMTX.evts
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    0    1    2    3    4    5    6
+         0 1218   56   37   30   28   27   14
+         1    6  115    0    1    0    0   15
+         2    6    0  159    2    0    0    0
+         3    3    0    1  160    0    0    0
+         4    2    0    0    0  189    0    0
+         5    4    0    0    0    0  192   20
+         6    1    0    0    0    0    8  156
+
+Overall Statistics
+                                          
+               Accuracy : 0.8935          
+                 95% CI : (0.8806, 0.9054)
+    No Information Rate : 0.5061          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.8418          
+ Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: 0 Class: 1 Class: 2 Class: 3 Class: 4 Class: 5 Class: 6
+Sensitivity            0.9823  0.67251  0.80711  0.82902  0.87097  0.84581  0.76098
+Specificity            0.8413  0.99035  0.99645  0.99823  0.99910  0.98920  0.99599
+Pos Pred Value         0.8638  0.83942  0.95210  0.97561  0.98953  0.88889  0.94545
+Neg Pred Value         0.9788  0.97579  0.98336  0.98556  0.98761  0.98433  0.97856
+Prevalence             0.5061  0.06980  0.08041  0.07878  0.08857  0.09265  0.08367
+Detection Rate         0.4971  0.04694  0.06490  0.06531  0.07714  0.07837  0.06367
+Detection Prevalence   0.5755  0.05592  0.06816  0.06694  0.07796  0.08816  0.06735
+Balanced Accuracy      0.9118  0.83143  0.90178  0.91362  0.93504  0.91751  0.87848
+> vec_locV2 <- (vec_loc %/% 20) * 20
+> compare.loc <- as.data.frame(cbind(vec_locV2,true_loc))
+> compare.loc$diff <- true_loc - vec_locV2
+> stats_comp <- as.data.frame(count(compare.loc,diff) )
+> histogram(stats_comp$n)
+> plot(stats_comp$diff,stats_comp$n)
+> sum(stats_comp$n)
+[1] 2450
+> stats_comp$diff
+ [1] -340 -260 -220 -200 -160 -140 -120  -80  -60  -40  -20    0   20   40   60   80  100  120  140  160  180  200  220
+[24]  280  360  400
+> sum(stats_comp$n) - stats_comp$n[12]
+[1] 291

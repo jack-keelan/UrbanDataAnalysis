@@ -1,0 +1,79 @@
+> dim(test.false)
+[1] 11133     2
+> confusionMatrix(preds,test$SourceID)
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     0     1     2     3     4     5     6
+         0 13174  2047  1690  1584  1452  1500  1320
+         1    26  1363     8    12     5    15   168
+         2    43    49  1798    31    10    15    23
+         3    93    23    72  1942    14    18    10
+         4    86    34    13    16  2086    10    17
+         5    13     5     2     4     2  1833   296
+         6    65    57    14    16    11   244  1776
+
+Overall Statistics
+                                         
+               Accuracy : 0.6829         
+                 95% CI : (0.678, 0.6877)
+    No Information Rate : 0.3846         
+    P-Value [Acc > NIR] : < 2.2e-16      
+                                         
+                  Kappa : 0.5562         
+ Mcnemar's Test P-Value : < 2.2e-16      
+
+Statistics by Class:
+
+                     Class: 0 Class: 1 Class: 2 Class: 3 Class: 4 Class: 5 Class: 6
+Sensitivity            0.9759  0.38094  0.49986  0.53870  0.58268  0.50426  0.49197
+Specificity            0.5560  0.99258  0.99457  0.99270  0.99442  0.98977  0.98708
+Pos Pred Value         0.5786  0.85348  0.91315  0.89411  0.92219  0.85058  0.81356
+Neg Pred Value         0.9736  0.93390  0.94571  0.94950  0.95451  0.94531  0.94429
+Prevalence             0.3846  0.10192  0.10246  0.10269  0.10198  0.10355  0.10283
+Detection Rate         0.3753  0.03883  0.05122  0.05532  0.05942  0.05221  0.05059
+Detection Prevalence   0.6485  0.04549  0.05609  0.06187  0.06444  0.06139  0.06218
+Balanced Accuracy      0.7659  0.68676  0.74722  0.76570  0.78855  0.74702  0.73952
+> train.indices <- c(1:(nrow(df.mod)/2) )
+> length(train.indices)
+[1] 19502
+
+
+# This is the 50%(first half TNG) 2cd half of training set test
+> dim(test.false)
+[1] 5789    2
+> confusionMatrix(preds,test$SourceID)
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    0    1    2    3    4    5    6
+         0 7346 1075  862  832  764  828  697
+         1    5  811    6    9    4   24  127
+         2   24   30 1116   13   10   12   11
+         3   40    7   22 1062   11    7    4
+         4   16    6    1    1 1235    0    4
+         5   12    0    1    2    2 1111  134
+         6   24   26    2    6    4  124 1033
+
+Overall Statistics
+                                          
+               Accuracy : 0.7032          
+                 95% CI : (0.6967, 0.7096)
+    No Information Rate : 0.3829          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.5872          
+ Mcnemar's Test P-Value : < 2.2e-16       
+
+Statistics by Class:
+
+                     Class: 0 Class: 1 Class: 2 Class: 3 Class: 4 Class: 5 Class: 6
+Sensitivity            0.9838  0.41483  0.55522  0.55169  0.60837  0.52754  0.51393
+Specificity            0.5798  0.99003  0.99428  0.99482  0.99840  0.99132  0.98937
+Pos Pred Value         0.5922  0.82252  0.91776  0.92108  0.97783  0.88035  0.84742
+Neg Pred Value         0.9830  0.93822  0.95111  0.95297  0.95641  0.94545  0.94657
+Prevalence             0.3829  0.10024  0.10306  0.09870  0.10409  0.10798  0.10306
+Detection Rate         0.3767  0.04158  0.05722  0.05445  0.06332  0.05697  0.05297
+Detection Prevalence   0.6360  0.05056  0.06235  0.05912  0.06476  0.06471  0.06250
+Balanced Accuracy      0.7818  0.70243  0.77475  0.77326  0.80339  0.75943  0.75165
+> saveRDS(rf.best, file="RF_features_long.rds")

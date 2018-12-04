@@ -1,0 +1,343 @@
+> dim(test.false)
+[1] 11133     2
+> confusionMatrix(preds,test$SourceID)
+Confusion Matrix and Statistics
+
+          Reference
+Prediction     0     1     2     3     4     5     6
+         0 13174  2047  1690  1584  1452  1500  1320
+         1    26  1363     8    12     5    15   168
+         2    43    49  1798    31    10    15    23
+         3    93    23    72  1942    14    18    10
+         4    86    34    13    16  2086    10    17
+         5    13     5     2     4     2  1833   296
+         6    65    57    14    16    11   244  1776
+
+Overall Statistics
+                                         
+               Accuracy : 0.6829         
+                 95% CI : (0.678, 0.6877)
+    No Information Rate : 0.3846         
+    P-Value [Acc > NIR] : < 2.2e-16      
+                                         
+                  Kappa : 0.5562         
+ Mcnemar's Test P-Value : < 2.2e-16      
+
+Statistics by Class:
+
+                     Class: 0 Class: 1 Class: 2 Class: 3 Class: 4 Class: 5 Class: 6
+Sensitivity            0.9759  0.38094  0.49986  0.53870  0.58268  0.50426  0.49197
+Specificity            0.5560  0.99258  0.99457  0.99270  0.99442  0.98977  0.98708
+Pos Pred Value         0.5786  0.85348  0.91315  0.89411  0.92219  0.85058  0.81356
+Neg Pred Value         0.9736  0.93390  0.94571  0.94950  0.95451  0.94531  0.94429
+Prevalence             0.3846  0.10192  0.10246  0.10269  0.10198  0.10355  0.10283
+Detection Rate         0.3753  0.03883  0.05122  0.05532  0.05942  0.05221  0.05059
+Detection Prevalence   0.6485  0.04549  0.05609  0.06187  0.06444  0.06139  0.06218
+Balanced Accuracy      0.7659  0.68676  0.74722  0.76570  0.78855  0.74702  0.73952
+> train.indices <- c(1:(nrow(df.mod)/2) )
+> length(train.indices)
+[1] 19502
+
+
+# This is the 50%(first half TNG) 2cd half of training set test
+> dim(test.false)
+[1] 5789    2
+> confusionMatrix(preds,test$SourceID)
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    0    1    2    3    4    5    6
+         0 7346 1075  862  832  764  828  697
+         1    5  811    6    9    4   24  127
+         2   24   30 1116   13   10   12   11
+         3   40    7   22 1062   11    7    4
+         4   16    6    1    1 1235    0    4
+         5   12    0    1    2    2 1111  134
+         6   24   26    2    6    4  124 1033
+
+Overall Statistics
+                                          
+               Accuracy : 0.7032          
+                 95% CI : (0.6967, 0.7096)
+    No Information Rate : 0.3829          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.5872          
+ Mcnemar's Test P-Value : < 2.2e-16       
+
+Statistics by Class:
+
+                     Class: 0 Class: 1 Class: 2 Class: 3 Class: 4 Class: 5 Class: 6
+Sensitivity            0.9838  0.41483  0.55522  0.55169  0.60837  0.52754  0.51393
+Specificity            0.5798  0.99003  0.99428  0.99482  0.99840  0.99132  0.98937
+Pos Pred Value         0.5922  0.82252  0.91776  0.92108  0.97783  0.88035  0.84742
+Neg Pred Value         0.9830  0.93822  0.95111  0.95297  0.95641  0.94545  0.94657
+Prevalence             0.3829  0.10024  0.10306  0.09870  0.10409  0.10798  0.10306
+Detection Rate         0.3767  0.04158  0.05722  0.05445  0.06332  0.05697  0.05297
+Detection Prevalence   0.6360  0.05056  0.06235  0.05912  0.06476  0.06471  0.06250
+Balanced Accuracy      0.7818  0.70243  0.77475  0.77326  0.80339  0.75943  0.75165
+> saveRDS(rf.best, file="RF_features_long.rds")
+
+
+## 18 ch
+Confusion Matrix and Statistics
+
+          Reference
+Prediction   0   1   2   3   4   5   6
+         0 970  45  31  29  19  36  26
+         1  34 116   0   3   0   0  27
+         2 218  10 164  19   7  12  17
+         3   1   0   0 142   0   0   0
+         4   0   0   0   0 191   0   1
+         5  17   0   2   0   0 171  26
+         6   0   0   0   0   0   8 108
+
+Overall Statistics
+                                          
+               Accuracy : 0.76            
+                 95% CI : (0.7426, 0.7768)
+    No Information Rate : 0.5061          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.6656          
+ Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: 0 Class: 1 Class: 2 Class: 3 Class: 4 Class: 5 Class: 6
+Sensitivity            0.7823  0.67836  0.83249  0.73575  0.88018  0.75330  0.52683
+Specificity            0.8463  0.97192  0.87439  0.99956  0.99955  0.97976  0.99644
+Pos Pred Value         0.8391  0.64444  0.36689  0.99301  0.99479  0.79167  0.93103
+Neg Pred Value         0.7913  0.97577  0.98352  0.97789  0.98849  0.97493  0.95844
+Prevalence             0.5061  0.06980  0.08041  0.07878  0.08857  0.09265  0.08367
+Detection Rate         0.3959  0.04735  0.06694  0.05796  0.07796  0.06980  0.04408
+Detection Prevalence   0.4718  0.07347  0.18245  0.05837  0.07837  0.08816  0.04735
+Balanced Accuracy      0.8143  0.82514  0.85344  0.86765  0.93987  0.86653  0.76163
+> vec_locV2 <- (vec_loc %/% 20) * 20
+> compare.loc <- as.data.frame(cbind(vec_locV2,true_loc))
+> compare.loc$diff <- true_loc - vec_locV2
+> stats_comp <- as.data.frame(count(compare.loc,diff) )
+> histogram(stats_comp$n)
+> plot(stats_comp$diff,stats_comp$n)
+> sum(stats_comp$n)
+[1] 2450
+> stats_comp$diff
+ [1] -960 -940 -860 -720 -680 -660 -640 -620 -600 -580 -560 -540 -520 -500 -480 -460 -440 -420 -400 -380 -360 -340 -320
+[24] -300 -280 -260 -240 -220 -200 -180 -160 -140 -120 -100  -80  -60  -40  -20    0   20   40   60   80  100  120  140
+[47]  160  180  200
+> sum(stats_comp$n) - stats_comp$n[2]
+[1] 2449
+> sum(stats_comp$n) - stats_comp$n[38]
+[1] 2405
+> s3 <- vec_lng[vec_ans != 0]
+> a3 <- vec_ans[vec_lng < 50]
+> hist(vec_lng); hist(s3[s3 < 20])#, breaks = 20)
+> plot(vec_lng,vec_ans)
+> plot(s3,a3)
+Error in xy.coords(x, y, xlabel, ylabel, log) : 
+
+##### 56ch selected w/ windowing for training but not prediction (rolling 2 sec)
+> confMTX.evts
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    0    1    2    3    4    5    6
+         0 1232   56   37   35   28   29   15
+         1    2  114    0    0    0    0   15
+         2    2    0  159    2    0    0    0
+         3    1    0    1  156    0    0    0
+         4    1    0    0    0  189    0    0
+         5    2    0    0    0    0  190   20
+         6    0    1    0    0    0    8  155
+
+Overall Statistics
+                                          
+               Accuracy : 0.8959          
+                 95% CI : (0.8831, 0.9077)
+    No Information Rate : 0.5061          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.8445          
+ Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: 0 Class: 1 Class: 2 Class: 3 Class: 4 Class: 5 Class: 6
+Sensitivity            0.9935  0.66667  0.80711  0.80829  0.87097  0.83700  0.75610
+Specificity            0.8347  0.99254  0.99822  0.99911  0.99955  0.99010  0.99599
+Pos Pred Value         0.8603  0.87023  0.97546  0.98734  0.99474  0.89623  0.94512
+Neg Pred Value         0.9921  0.97542  0.98338  0.98386  0.98761  0.98347  0.97813
+Prevalence             0.5061  0.06980  0.08041  0.07878  0.08857  0.09265  0.08367
+Detection Rate         0.5029  0.04653  0.06490  0.06367  0.07714  0.07755  0.06327
+Detection Prevalence   0.5845  0.05347  0.06653  0.06449  0.07755  0.08653  0.06694
+Balanced Accuracy      0.9141  0.82960  0.90267  0.90370  0.93526  0.91355  0.87604
+> vec_locV2 <- (vec_loc %/% 20) * 20
+> compare.loc <- as.data.frame(cbind(vec_locV2,true_loc))
+> compare.loc$diff <- true_loc - vec_locV2
+> stats_comp <- as.data.frame(count(compare.loc,diff) )
+> histogram(stats_comp$n)
+> plot(stats_comp$diff,stats_comp$n)
+> sum(stats_comp$n)
+[1] 2450
+> stats_comp$diff
+ [1] -360 -260 -200 -140  -80  -60  -20    0   20   40   60   80  100  120  140  160  180  200  220  280  360  400
+> sum(stats_comp$n) - stats_comp$n[8]
+[1] 300
+
+## same as above but 1 sec integration for the test set @ max(s$n) >= 5
+> confMTX.evts <- confusionMatrix(as.factor(vec_ans),true_val)
+> confMTX.evts
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    0    1    2    3    4    5    6
+         0 1204   54   36   38   28   31   21
+         1    5  116    0    0    0    0   12
+         2   17    0  161    1    0    0    0
+         3    4    0    0  154    0    0    0
+         4    0    0    0    0  189    0    0
+         5   10    1    0    0    0  190   21
+         6    0    0    0    0    0    6  151
+
+Overall Statistics
+                                          
+               Accuracy : 0.8837          
+                 95% CI : (0.8703, 0.8961)
+    No Information Rate : 0.5061          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.8271          
+ Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: 0 Class: 1 Class: 2 Class: 3 Class: 4 Class: 5 Class: 6
+Sensitivity            0.9710  0.67836  0.81726  0.79793  0.87097  0.83700  0.73659
+Specificity            0.8281  0.99254  0.99201  0.99823  1.00000  0.98561  0.99733
+Pos Pred Value         0.8527  0.87218  0.89944  0.97468  1.00000  0.85586  0.96178
+Neg Pred Value         0.9653  0.97626  0.98415  0.98298  0.98762  0.98339  0.97645
+Prevalence             0.5061  0.06980  0.08041  0.07878  0.08857  0.09265  0.08367
+Detection Rate         0.4914  0.04735  0.06571  0.06286  0.07714  0.07755  0.06163
+Detection Prevalence   0.5763  0.05429  0.07306  0.06449  0.07714  0.09061  0.06408
+Balanced Accuracy      0.8995  0.83545  0.90463  0.89808  0.93548  0.91130  0.86696
+> vec_locV2 <- (vec_loc %/% 20) * 20
+> compare.loc <- as.data.frame(cbind(vec_locV2,true_loc))
+> compare.loc$diff <- true_loc - vec_locV2
+> stats_comp <- as.data.frame(count(compare.loc,diff) )
+> histogram(stats_comp$n)
+> plot(stats_comp$diff,stats_comp$n)
+> compare2.loc <- cbind(compare.loc,vec_ans)
+> temp.loc <- subset(compare2.loc, abs(compare.loc$diff) > 50)
+> temp2.loc <- subset(temp.loc, temp.loc$vec_ans != 0)
+> sum(stats_comp$n)
+[1] 2450
+> stats_comp$diff
+ [1] -460 -380 -360 -340 -280 -260 -240 -220 -200 -180 -160 -140 -120 -100  -80  -60  -40  -20    0   20   40   60   80
+[24]  100  120  140  160  180  200  220  280  360
+> sum(stats_comp$n) - stats_comp$n[2]
+[1] 2449
+> sum(stats_comp$n) - stats_comp$n[19]
+[1] 315
+
+## same with 3 sec data
+> confMTX.evts <- confusionMatrix(as.factor(vec_ans),true_val)
+> confMTX.evts
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    0    1    2    3    4    5    6
+         0 1240   61   40   44   36   31   17
+         1    0  109    0    0    0    0   14
+         2    0    0  156    1    0    0    0
+         3    0    0    1  148    0    0    0
+         4    0    0    0    0  181    0    0
+         5    0    0    0    0    0  187   18
+         6    0    1    0    0    0    9  156
+
+Overall Statistics
+                                          
+               Accuracy : 0.8886          
+                 95% CI : (0.8754, 0.9008)
+    No Information Rate : 0.5061          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.832           
+ Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: 0 Class: 1 Class: 2 Class: 3 Class: 4 Class: 5 Class: 6
+Sensitivity            1.0000  0.63743  0.79188  0.76684  0.83410  0.82379  0.76098
+Specificity            0.8107  0.99386  0.99956  0.99956  1.00000  0.99190  0.99555
+Pos Pred Value         0.8441  0.88618  0.99363  0.99329  1.00000  0.91220  0.93976
+Neg Pred Value         1.0000  0.97336  0.98212  0.98044  0.98413  0.98218  0.97855
+Prevalence             0.5061  0.06980  0.08041  0.07878  0.08857  0.09265  0.08367
+Detection Rate         0.5061  0.04449  0.06367  0.06041  0.07388  0.07633  0.06367
+Detection Prevalence   0.5996  0.05020  0.06408  0.06082  0.07388  0.08367  0.06776
+Balanced Accuracy      0.9054  0.81564  0.89572  0.88320  0.91705  0.90785  0.87826
+> vec_locV2 <- (vec_loc %/% 20) * 20
+> compare.loc <- as.data.frame(cbind(vec_locV2,true_loc))
+> compare.loc$diff <- true_loc - vec_locV2
+> stats_comp <- as.data.frame(count(compare.loc,diff) )
+> histogram(stats_comp$n)
+> plot(stats_comp$diff,stats_comp$n)
+> compare2.loc <- cbind(compare.loc,vec_ans)
+> temp.loc <- subset(compare2.loc, abs(compare.loc$diff) > 50)
+> temp2.loc <- subset(temp.loc, temp.loc$vec_ans != 0)
+> sum(stats_comp$n)
+[1] 2450
+> stats_comp$diff
+ [1] -20   0  20  40  60  80 100 120 140 160 180 200 220 280 360 400
+> sum(stats_comp$n) - stats_comp$n[2]
+[1] 340
+
+## same with 4 sec data
+> confMTX.evts
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    0    1    2    3    4    5    6
+         0 1240   66   52   52   42   37   31
+         1    0  104    0    0    0    0   11
+         2    0    0  145    0    0    0    0
+         3    0    0    0  141    0    0    0
+         4    0    0    0    0  175    0    0
+         5    0    0    0    0    0  180   21
+         6    0    1    0    0    0   10  142
+
+Overall Statistics
+                                          
+               Accuracy : 0.8682          
+                 95% CI : (0.8541, 0.8813)
+    No Information Rate : 0.5061          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.7985          
+ Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: 0 Class: 1 Class: 2 Class: 3 Class: 4 Class: 5 Class: 6
+Sensitivity            1.0000  0.60819  0.73604  0.73057  0.80645  0.79295  0.69268
+Specificity            0.7686  0.99517  1.00000  1.00000  1.00000  0.99055  0.99510
+Pos Pred Value         0.8158  0.90435  1.00000  1.00000  1.00000  0.89552  0.92810
+Neg Pred Value         1.0000  0.97131  0.97744  0.97748  0.98154  0.97910  0.97257
+Prevalence             0.5061  0.06980  0.08041  0.07878  0.08857  0.09265  0.08367
+Detection Rate         0.5061  0.04245  0.05918  0.05755  0.07143  0.07347  0.05796
+Detection Prevalence   0.6204  0.04694  0.05918  0.05755  0.07143  0.08204  0.06245
+Balanced Accuracy      0.8843  0.80168  0.86802  0.86528  0.90323  0.89175  0.84389
+> vec_locV2 <- (vec_loc %/% 20) * 20
+> compare.loc <- as.data.frame(cbind(vec_locV2,true_loc))
+> compare.loc$diff <- true_loc - vec_locV2
+> stats_comp <- as.data.frame(count(compare.loc,diff) )
+> histogram(stats_comp$n)
+> plot(stats_comp$diff,stats_comp$n)
+> compare2.loc <- cbind(compare.loc,vec_ans)
+> temp.loc <- subset(compare2.loc, abs(compare.loc$diff) > 50)
+> temp2.loc <- subset(temp.loc, temp.loc$vec_ans != 0)
+> sum(stats_comp$n)
+[1] 2450
+> stats_comp$diff
+ [1] -20   0  20  40  60  80 100 120 140 160 180 200 220 280 360 400
+> sum(stats_comp$n) - stats_comp$n[2]
+[1] 412
